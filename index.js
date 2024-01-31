@@ -24,19 +24,26 @@ let heading = document.querySelector('.heading')
 
 document.addEventListener('DOMContentLoaded', function () {
     var svgObjekt = document.getElementById("svgfile");
-    var svgInnehall = svgObjekt.contentDocument;
-    ground = svgInnehall.getElementById("ground")
-    ground.style.opacity = '0'
-    scaffold = svgInnehall.getElementById("scaffold");
-    scaffold.style.opacity = '0'
-    head = svgInnehall.getElementById("head")
-    head.style.opacity = '0'
-    body = svgInnehall.getElementById("body")
-    body.style.opacity = '0'
-    arms = svgInnehall.getElementById("arms")
-    arms.style.opacity = '0'
-    legs = svgInnehall.getElementById("legs")
-    legs.style.opacity = '0'
+    svgObjekt.addEventListener('load', function() {
+        var svgInnehall = svgObjekt.contentDocument;
+        ground = svgInnehall.getElementById("ground");
+        ground.style.opacity = '0';
+        ground = svgInnehall.getElementById("ground")
+        ground.style.opacity = '0'
+        scaffold = svgInnehall.getElementById("scaffold");
+        scaffold.style.opacity = '0'
+        head = svgInnehall.getElementById("head")
+        head.style.opacity = '0'
+        body = svgInnehall.getElementById("body")
+        body.style.opacity = '0'
+        arms = svgInnehall.getElementById("arms")
+        arms.style.opacity = '0'
+        legs = svgInnehall.getElementById("legs")
+        legs.style.opacity = '0'
+    });
+   
+
+  
 });
 
 function setWord() {
