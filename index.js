@@ -4,6 +4,7 @@ let wordArray = ['bananpaj', 'glasögon', 'lingonsylt', 'trädgårdsredskap', 'v
 let correctWord = ''
 let count = 0
 let allowedLetters = 'abcdefghijklmnopqrstuvwxyzåäö'
+let pressedKeys = ''
 let letterBox = document.querySelector('.used-letters')
 let errors = 0
 let ground
@@ -45,31 +46,48 @@ function setTiles() {
 }
 
 function checkForWin() {
+    console.log('count: ' + count)
     if(count === correctWord.length) {
         playBtn.classList.remove('hide')
     }
 }
 
 function hang() {
-    if(errors === 1) {
-        ground.style.opacity = 1;
+    switch(errors) {
+        case 1: ground.style.opacity = '1'
+        break;
+        case 2: scaffold.style.opacity = '1'
+        break;
+        case 3: head.style.opacity = '1'
+        break;
+        case 4: body.style.opacity = '1'
+        break;
+        case 5: arms.style.opacity = '1'
+        break;
+        case 6: legs.style.opacity = '1'
+        break;
+        default: ''
     }
 }
 
 function pressedKey(event) {
     let keyPressed = event.key
     if(correctWord.includes(keyPressed)) {
+        if(pressedKeys.includes(keyPressed)) return
         for (let i = 0; i < correctWord.length; i++) {
             if(correctWord.charAt(i) === keyPressed) {
                 playBoard.children[i].innerText = keyPressed 
                 count++
             }
         }
+        pressedKeys += keyPressed
         checkForWin()
     } else {
         if(allowedLetters.includes(keyPressed)) {
+            if(pressedKeys.includes(keyPressed)) return
             letterBox.innerText += keyPressed
             errors ++;
+            pressedKeys += keyPressed
             hang()
         }
     }
@@ -80,6 +98,13 @@ function listenForInput() {
 }
 
 function resetGame() {
+    pressedKeys = ''
+    ground.style.opacity = '0'
+    scaffold.style.opacity = '0'
+    head.style.opacity = '0'
+    body.style.opacity = '0'
+    arms.style.opacity = '0'
+    legs.style.opacity = '0'
     errors = 0
     letterBox.innerText = ''
     correctWord = ''
