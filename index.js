@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
 function setWord() {
     let num = Math.floor((Math.random() * 7))
     correctWord = wordArray[num]
-    console.log(correctWord)
 }
 
 function setTiles() {
@@ -61,7 +60,6 @@ function setTiles() {
 }
 
 function checkForWin() {
-    console.log('count: ' + count)
     if(count === correctWord.length) {
         gameOver = true
         winner.classList.add('show')
