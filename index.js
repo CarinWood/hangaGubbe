@@ -14,6 +14,8 @@ let body
 let arms
 let legs
 let gameOver = false;
+let winner = document.querySelector('.winner-sign')
+let instructionText = document.querySelector('.instruction')
 
 document.addEventListener('DOMContentLoaded', function () {
     var svgObjekt = document.getElementById("svgfile");
@@ -116,6 +118,7 @@ function resetGame() {
     playBoard.innerHTML = ''
     count = 0;
     gameOver = false;
+    instructionText.classList.remove('show')
     document.removeEventListener('keydown', pressedKey)
 }
 
@@ -123,6 +126,7 @@ function resetGame() {
 function startGame() {
     resetGame()
     playBtn.classList.add('hide')
+    instructionText.classList.add('show')
     setWord()
     setTiles()
     listenForInput()

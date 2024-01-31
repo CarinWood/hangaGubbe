@@ -8,12 +8,16 @@
   </head>
   <body>
     <object type="image/svg+xml" data="hangman.svg" id="svgfile"></object>
-    <div>
-      <p></p>
+    <div class="winner-sign">
+      <p>Du vann!</p>
+      <p>Spela igen?</p>
+      <button class="no-btn">Ja</button>
+      <button class="again-btn">Ja</button>
     </div>
     <button class="play-btn">Spela</button>
     <div class="used-letters"></div>
     <div class="play-board"></div>
+    <p class="instruction">Välj en bokstav genom att trycka ned en tangent</p>
     <script src="index.js"></script>
   </body>
 </html>
