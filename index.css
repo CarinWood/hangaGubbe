@@ -17,9 +17,15 @@ object {
     width: 300px;
 }
 
+h1 {
+    margin-top: -100px;
+    margin-bottom: 30px;
+}
+
 .play-btn {
     font-size: 22px;
-    z-index: 100;
+    padding: 5px 12px;
+    cursor: pointer;
 }
 
 .play-board {
@@ -62,24 +68,34 @@ object {
     visibility: hidden;
 }
 
-.winner-sign {
-    width: 220px;
-    height: 120px;
+.winner-sign, .lost-sign {
+    width: 260px;
+    height: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
     border: 2px solid black;
+    position: absolute;
+    bottom: 35%;
+    left: 50%;
+    margin-left: -110px;
+    visibility: hidden;
+    background-color: whitesmoke;
 }
 
-.winner-sign p {
-    font-size: 22px;
-    margin-bottom: 5px;
+.winner-sign p, .lost-sign p {
+    font-size: 18px;
+    margin: 5px;
 }
 
-.again-btn {
+.again-btn, .again-btn-2 {
     font-size: 22px;
+    padding: 5px 12px;
+    margin: 0px 5px;
+    margin-top: 8px;
+    cursor: pointer;
 }
 
 .hide {

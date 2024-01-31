@@ -15,7 +15,12 @@ let arms
 let legs
 let gameOver = false;
 let winner = document.querySelector('.winner-sign')
+let loser = document.querySelector('.lost-sign')
 let instructionText = document.querySelector('.instruction')
+let againBtn = document.querySelector('.again-btn')
+let againBtn2 = document.querySelector('.again-btn-2')
+let heading = document.querySelector('.heading')
+
 
 document.addEventListener('DOMContentLoaded', function () {
     var svgObjekt = document.getElementById("svgfile");
@@ -52,7 +57,7 @@ function checkForWin() {
     console.log('count: ' + count)
     if(count === correctWord.length) {
         gameOver = true
-        playBtn.classList.remove('hide')
+        winner.classList.add('show')
     }
 }
 
@@ -70,7 +75,7 @@ function hang() {
         break;
         case 6: legs.style.opacity = '1'
         gameOver = true;
-        playBtn.classList.remove('hide')
+        loser.classList.add('show')
         break;
         default: ''
     }
@@ -116,6 +121,8 @@ function resetGame() {
     letterBox.innerText = ''
     correctWord = ''
     playBoard.innerHTML = ''
+    winner.classList.remove('show')
+    loser.classList.remove('show')
     count = 0;
     gameOver = false;
     instructionText.classList.remove('show')
@@ -126,6 +133,7 @@ function resetGame() {
 function startGame() {
     resetGame()
     playBtn.classList.add('hide')
+    heading.classList.add('hide')
     instructionText.classList.add('show')
     setWord()
     setTiles()
@@ -134,3 +142,5 @@ function startGame() {
 
 
 playBtn.addEventListener('click', startGame)
+againBtn.addEventListener('click', startGame)
+againBtn2.addEventListener('click', startGame)
