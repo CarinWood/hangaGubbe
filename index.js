@@ -13,6 +13,7 @@ let head
 let body
 let arms
 let legs
+let gameOver = false;
 
 document.addEventListener('DOMContentLoaded', function () {
     var svgObjekt = document.getElementById("svgfile");
@@ -48,6 +49,7 @@ function setTiles() {
 function checkForWin() {
     console.log('count: ' + count)
     if(count === correctWord.length) {
+        gameOver = true
         playBtn.classList.remove('hide')
     }
 }
@@ -65,12 +67,15 @@ function hang() {
         case 5: arms.style.opacity = '1'
         break;
         case 6: legs.style.opacity = '1'
+        gameOver = true;
+        playBtn.classList.remove('hide')
         break;
         default: ''
     }
 }
 
 function pressedKey(event) {
+    if(gameOver) return
     let keyPressed = event.key
     if(correctWord.includes(keyPressed)) {
         if(pressedKeys.includes(keyPressed)) return
@@ -110,6 +115,7 @@ function resetGame() {
     correctWord = ''
     playBoard.innerHTML = ''
     count = 0;
+    gameOver = false;
     document.removeEventListener('keydown', pressedKey)
 }
 
